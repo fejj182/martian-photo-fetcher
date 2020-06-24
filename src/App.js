@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import MartianImageFetcher from './containers/MartianImageFetcher'
 
 function App() {
+  const [date, setDate] = useState("");
+
+  function handle2019Click() {
+    setDate("2019-01-01");
+  }
+
+  const handle2020Click = () => {
+    setDate("2020-01-01");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handle2019Click}>Fetch image for 2019</button>
+      <button onClick={handle2020Click}>Fetch image for 2020</button>
+
+      {date ? <MartianImageFetcher date={date} /> : null}
     </div>
   );
 }
 
-export default App;
+export default App
